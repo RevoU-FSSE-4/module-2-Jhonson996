@@ -8,7 +8,7 @@ btnNav.addEventListener('click', () => {
         openNavBar();
     }
 });
- 
+
 function openNavBar() {
     headerNav.style.left = '0';
 }
@@ -36,9 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
   });
 
-
-
-// Submit form
+// Submit-form
 function submitForm() {
     // Mendapatkan nilai dari inputan
 		var fullName = document.getElementById("full_name").value;
@@ -91,4 +89,42 @@ function submitForm() {
 	
   }
 
+// modal
+var modal = document.getElementById("modalImg");
+var btn = document.getElementById("BtnImg");
+var span = document.getElementsByClassName("close")[0];
 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Fungsi u/darkMode
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const bodyElement = document.body;
+
+darkModeToggle.addEventListener('change', function() {
+    if (darkModeToggle.checked) {
+        bodyElement.classList.add('dark-mode');
+        sessionStorage.setItem('darkMode', 'enabled');
+    } else {
+        bodyElement.classList.remove('dark-mode');
+        sessionStorage.setItem('darkMode', 'disabled');
+    }
+});
+
+// check DarkMode aktif?
+window.onload = function () {
+    const darkModeStatus = sessionStorage.getItem('darkMode');
+    if (darkModeStatus === 'enabled') {
+        darkModeToggle.checked = true;
+        bodyElement.classList.add('dark-mode');
+    }
+}
